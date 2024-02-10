@@ -11,22 +11,27 @@
     <h1>My Library</h1>
 
     <button onclick="openForm()">Add Book</button>
-    <div class="form-popup" id="book-form"> 
-        <form action=""></form>
+
+    <form action="" class="form-popup" id="book-form">
         <h2>Add Book</h2>
 
         <label for="title">Title</label>
-        <input type="text" placeholder="title" required>
+        <input id=title type="text" placeholder="title" required>
 
         <label for="author">Author</label>
-        <input type="text" placeholder="author" required>
+        <input id="author" type="text" placeholder="author" required>
 
-        <label for="words">Number of pages</label>
-        <input type="text" placeholder="pages" required>
+        <label for="pages">Pages</label>
+        <input id="pages" type="number" placeholder="pages" required>
 
-        <button type="submit">Add</button>
+        <label for="read">Read book?</label>
+        <input id="read" type="checkbox">
+
+        <button id=submit type="submit">Add</button>
         <button type="button" onclick="closeForm()">Close</button>
-    </div>
+    </form>
+        
+
 
     <div class="books">
 
