@@ -13,7 +13,7 @@ function Book(title, author, pages, read){
 }
 
 function AddBookToLibrary() {
-    var tempBook = new Book("test title", "test author", Math.floor(Math.random() * 100), false);
+    var tempBook = new Book("test title", "test author", Math.floor(Math.random() * 100), true);
     myLibrary.push(tempBook);
 }
 
@@ -36,7 +36,9 @@ function CreateBookCard(book){
     pages.textContent = book.pages;
     const read = document.createElement('input');
     read.setAttribute('type', 'checkbox');
-    read.setAttribute('checked', 'true');
+    if (book.read){
+        read.setAttribute('checked', '');
+    }
     const deleteButton = document.createElement('button');
     deleteButton.textContent = 'delete';
 
@@ -49,7 +51,15 @@ function CreateBookCard(book){
     return card;
 }
 
-for(var i = 0; i < 10; i++){
+function openForm() {
+    document.getElementById("book-form").style.display = "block";
+  }
+  
+function closeForm() {
+    document.getElementById("book-form").style.display = "none";
+} 
+
+for(var i = 0; i < 5; i++){
     AddBookToLibrary();
 }
 DisplayBooks(myLibrary);
