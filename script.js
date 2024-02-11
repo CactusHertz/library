@@ -41,11 +41,15 @@ function CreateBookCard(book, index){
     if (book.read){
         read.setAttribute('checked', '');
     }
+    read.addEventListener('click', () => {
+        myLibrary[index].read = read.checked
+    });
     const deleteButton = document.createElement('button');
     deleteButton.textContent = 'delete';
     deleteButton.addEventListener('click', () =>{
         deleteBook(deleteButton.parentElement);
-    })
+    });
+
 
     card.appendChild(title);
     card.appendChild(author);
@@ -87,6 +91,8 @@ bookForm.addEventListener("submit", (e) => {
 
     closeForm();
 });
+
+
 
 
 for(var i = 0; i < 5; i++){
