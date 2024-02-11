@@ -17,17 +17,18 @@ function AddBookToLibrary(title, author, pages, read) {
     myLibrary.push(tempBook);
 }
 
-function DisplayBooks(books) {
+function DisplayBooks() {
     const list = document.querySelector('.books');
     list.innerHTML = '';
-    for (var i = 0; i < books.length; i++){
-        console.log(books[i].info());
-        list.appendChild(CreateBookCard(books[i]));
+    for (var i = 0; i < myLibrary.length; i++){
+        console.log(myLibrary[i].info());
+        list.appendChild(CreateBookCard(myLibrary[i], i));
     }
 }
 
-function CreateBookCard(book){
+function CreateBookCard(book, index){
     const card = document.createElement('div');
+    card.setAttribute('data-index', index);
 
     const title = document.createElement('div');
     title.textContent = book.title;
@@ -42,6 +43,9 @@ function CreateBookCard(book){
     }
     const deleteButton = document.createElement('button');
     deleteButton.textContent = 'delete';
+    deleteButton.addEventListener('click', () =>{
+        deleteBook(deleteButton.parentElement);
+    })
 
     card.appendChild(title);
     card.appendChild(author);
@@ -60,6 +64,13 @@ function closeForm() {
     document.getElementById("book-form").style.display = "none";
 } 
 
+function deleteBook(bookCard) {
+    myLibrary.splice(bookCard.dataset.index, 1);
+    bookCard.remove();
+    DisplayBooks();
+}
+
+
 let bookForm = document.getElementById('book-form');
 
 bookForm.addEventListener("submit", (e) => {
@@ -70,15 +81,16 @@ bookForm.addEventListener("submit", (e) => {
     let pages = document.getElementById('pages');
     let read = document.getElementById('read');
     
-
     AddBookToLibrary(title.value, author.value, pages.value, read.checked);
-    DisplayBooks(myLibrary);
-  });
+    DisplayBooks();
+    bookForm.reset();
+
+    closeForm();
+});
 
 
 for(var i = 0; i < 5; i++){
     AddBookToLibrary('title','author', 100, false);
 }
 
-
-DisplayBooks(myLibrary);
+DisplayBooks();
