@@ -1,3 +1,45 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
 .form-popup {
     display: none;
+    padding: 1em;
+}
+
+h1 {
+    background-color: #059669;
+    color: white;
+    padding: .5em;
+    margin-bottom: .5em;
+}
+
+
+.books {
+    display: grid;
+
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: auto;
+
+    gap: 1em;
+    margin: 1em;
+}
+
+.card {
+    background-color: #059669;
+    color: white;
+    border-radius: .5em;
+    padding: .5em;
+}
+
+button {
+    background-color: #065f46;
+    color: white;
+    border-radius: .25em;
+    border-style: none;
+
+    margin: .5em;
+    padding: .25em; 
 }

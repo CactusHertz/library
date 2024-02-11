@@ -29,13 +29,14 @@ function DisplayBooks() {
 function CreateBookCard(book, index){
     const card = document.createElement('div');
     card.setAttribute('data-index', index);
+    card.setAttribute('class', 'card');
 
-    const title = document.createElement('div');
+    const title = document.createElement('h3');
     title.textContent = book.title;
     const author = document.createElement('div');
     author.textContent = book.author;
     const pages = document.createElement('div');
-    pages.textContent = book.pages;
+    pages.textContent = book.pages + ' pages';
     const read = document.createElement('input');
     read.setAttribute('type', 'checkbox');
     if (book.read){
@@ -62,10 +63,12 @@ function CreateBookCard(book, index){
 
 function openForm() {
     document.getElementById("book-form").style.display = "block";
+    document.getElementById('add').style.display = 'none';
   }
   
 function closeForm() {
     document.getElementById("book-form").style.display = "none";
+    document.getElementById('add').style.display = 'block';
 } 
 
 function deleteBook(bookCard) {
@@ -95,8 +98,8 @@ bookForm.addEventListener("submit", (e) => {
 
 
 
-for(var i = 0; i < 5; i++){
-    AddBookToLibrary('title','author', 100, false);
+for(var i = 0; i < 25; i++){
+    AddBookToLibrary('Title','Author', 100, false);
 }
 
 DisplayBooks();
