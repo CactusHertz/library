@@ -1,15 +1,16 @@
 const myLibrary = [];
 
-function Book(title, author, pages, read){
-    // contructor
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
+class Book {
+    constructor(title, author, pages, read){
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read; 
+    }
 
-    this.info = function() {
+    info(){
         return (this.title + " by " + this.author + ", " + this.pages + " pages, " + this.read)
-    };
+    }
 }
 
 function AddBookToLibrary(title, author, pages, read) {
@@ -51,7 +52,6 @@ function CreateBookCard(book, index){
         deleteBook(deleteButton.parentElement);
     });
 
-
     card.appendChild(title);
     card.appendChild(author);
     card.appendChild(pages);
@@ -77,7 +77,6 @@ function deleteBook(bookCard) {
     DisplayBooks();
 }
 
-
 let bookForm = document.getElementById('book-form');
 
 bookForm.addEventListener("submit", (e) => {
@@ -94,8 +93,6 @@ bookForm.addEventListener("submit", (e) => {
 
     closeForm();
 });
-
-
 
 
 for(var i = 0; i < 25; i++){
